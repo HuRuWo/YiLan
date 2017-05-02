@@ -5,4 +5,23 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">设置</string>
+
+    <string-array name="main_titles">
+        <item>@string/fragment_news_1</item>
+        <item>@string/fragment_news_2</item>
+        <item>@string/fragment_news_3</item>
+        <item>@string/fragment_news_4</item>
+        <item>@string/fragment_news_5</item>
+        <item>@string/fragment_news_6</item>
+        <item>@string/fragment_news_7</item>
+    </string-array>
+
+    <string name="fragment_news_1">社会新闻</string>
+    <string name="fragment_news_2">国内新闻</string>
+    <string name="fragment_news_3">国际新闻</string>
+    <string name="fragment_news_4">娱乐新闻</string>
+    <string name="fragment_news_5">体育新闻</string>
+    <string name="fragment_news_6">科技新闻</string>
+    <string name="fragment_news_7">健康知识</string>
+
 </resources>

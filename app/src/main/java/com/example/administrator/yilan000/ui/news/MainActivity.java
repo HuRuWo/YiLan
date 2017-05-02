@@ -1,12 +1,12 @@
-package com.example.administrator.yilan000;
+package com.example.administrator.yilan000.ui.news;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -15,12 +15,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.administrator.yilan000.Activity.BaseActivity;
-import com.example.administrator.yilan000.fragment.MeiNvFragment;
-import com.example.administrator.yilan000.fragment.NewsFragment;
+import com.example.administrator.yilan000.R;
+import com.example.administrator.yilan000.ui.base.BaseActivity;
+import com.example.administrator.yilan000.ui.base.TabPagerAdapter;
+import com.example.administrator.yilan000.ui.news.fragment.NewsFragment;
+
+import static com.example.administrator.yilan000.R.id.viewPager;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    private ViewPager mViewPager;
+    private String[] mTitles;
+    private NewsFragment[] fragments;
+private     TabLayout tabLayout;
+    private TabPagerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +38,24 @@ public class MainActivity extends BaseActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mTitles = getResources().getStringArray(R.array.main_titles);
 
-        //默认fragment
-        NewsFragment fragment=new NewsFragment();
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        FragmentTransaction transaction=fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_container,fragment);
-        transaction.commit();
+        mViewPager = (ViewPager) findViewById(viewPager);
 
+        tabLayout=(TabLayout) findViewById(R.id.tab_layout);
+
+        fragments = new NewsFragment[mTitles.length];
+
+        for(int i=0;i<mTitles.length;i++) {
+            fragments[i] = new NewsFragment();
+        }
+
+         mAdapter = new TabPagerAdapter(getSupportFragmentManager(), fragments);
+        mAdapter.setTabTitles(mTitles);
+        mViewPager.setAdapter(mAdapter);
+        //设置显示模式 滚动
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.setupWithViewPager(mViewPager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -98,11 +118,7 @@ public class MainActivity extends BaseActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
-            NewsFragment fragment=new NewsFragment();
-            FragmentManager fragmentManager=getSupportFragmentManager();
-            FragmentTransaction transaction=fragmentManager.beginTransaction();
-            transaction.replace(R.id.fragment_container,fragment);
-            transaction.commit();
+
 
         } else if (id == R.id.nav_gallery) {
             Toast.makeText(getApplicationContext(),
@@ -110,11 +126,7 @@ public class MainActivity extends BaseActivity
 
         } else if (id == R.id.nav_slideshow) {
             // Handle the camera action
-            MeiNvFragment fragment=new MeiNvFragment();
-            FragmentManager fragmentManager=getSupportFragmentManager();
-            FragmentTransaction transaction=fragmentManager.beginTransaction();
-            transaction.replace(R.id.fragment_container,fragment);
-            transaction.commit();
+
 
         } else if (id == R.id.nav_manage) {
             Toast.makeText(getApplicationContext(),
@@ -131,4 +143,5 @@ public class MainActivity extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
