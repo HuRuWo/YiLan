@@ -1,4 +1,4 @@
-package com.example.administrator.yilan000.htmldata;
+package com.example.administrator.yilan000.bean;
 
 /**
  * Created by Administrator on 2016/10/24.

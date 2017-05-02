@@ -4,16 +4,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.example.administrator.yilan000.htmldata.News;
 import com.example.administrator.yilan000.R;
+import com.example.administrator.yilan000.bean.NewsGson;
+import com.example.administrator.yilan000.util.PictureUtil;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
 /**
  * Created by zhuchenxi on 16/6/2.
  */
 
-public class NewsViewHolder extends BaseViewHolder<News> {
+public class NewsViewHolder extends BaseViewHolder<NewsGson.NewslistBean> {
 
 
     private TextView mTv_name;
@@ -27,15 +27,10 @@ public class NewsViewHolder extends BaseViewHolder<News> {
         mImg_face = $(R.id.person_face);    }
 
     @Override
-    public void setData(final News data) {
+    public void setData(final NewsGson.NewslistBean data) {
         mTv_name.setText(data.getTitle());
         mTv_sign.setText(data.getCtime());
-        Glide.with(getContext())
-                .load(data.getPicUrl())
-                .placeholder(R.mipmap.ic_launcher)
-                .centerCrop()
-                .into(mImg_face);
+        PictureUtil.showImage(mImg_face,getContext(),data.getPicUrl());
     }
-
 
 }

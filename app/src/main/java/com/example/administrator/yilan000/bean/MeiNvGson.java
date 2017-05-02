@@ -1,4 +1,4 @@
-package com.example.administrator.yilan000.htmldata;
+package com.example.administrator.yilan000.bean;
 
 import com.google.gson.Gson;
 

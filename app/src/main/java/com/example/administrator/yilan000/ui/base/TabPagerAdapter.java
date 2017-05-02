@@ -17,7 +17,10 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
     public TabPagerAdapter(FragmentManager fm, Fragment[] fragments) {
         super(fm);
         this.fragments = fragments;
+
     }
+
+
 
     public void setTabTitles(@NonNull String[] tabTitles) {
         this.tabTitles = tabTitles;

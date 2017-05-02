@@ -1,10 +1,8 @@
-package com.example.administrator.yilan000.ui.news;
+package com.example.administrator.yilan000;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -12,13 +10,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.example.administrator.yilan000.R;
 import com.example.administrator.yilan000.ui.base.BaseActivity;
 import com.example.administrator.yilan000.ui.base.TabPagerAdapter;
-import com.example.administrator.yilan000.ui.news.fragment.NewsFragment;
+import com.example.administrator.yilan000.ui.news.NewsFragment;
+import com.example.administrator.yilan000.ui.pictures.fragment.MeiNvFragment;
 
 import static com.example.administrator.yilan000.R.id.viewPager;
 
@@ -28,8 +25,8 @@ public class MainActivity extends BaseActivity
 
     private ViewPager mViewPager;
     private String[] mTitles;
-    private NewsFragment[] fragments;
-private     TabLayout tabLayout;
+    private Fragment[] fragments;
+
     private TabPagerAdapter mAdapter;
 
     @Override
@@ -42,29 +39,20 @@ private     TabLayout tabLayout;
 
         mViewPager = (ViewPager) findViewById(viewPager);
 
-        tabLayout=(TabLayout) findViewById(R.id.tab_layout);
 
-        fragments = new NewsFragment[mTitles.length];
+        fragments = new Fragment[2];
 
-        for(int i=0;i<mTitles.length;i++) {
-            fragments[i] = new NewsFragment();
-        }
 
-         mAdapter = new TabPagerAdapter(getSupportFragmentManager(), fragments);
-        mAdapter.setTabTitles(mTitles);
+            fragments[0] =  NewsFragment.newInstance();
+            fragments[1] =  MeiNvFragment.newInstance();
+
+
+        mAdapter = new TabPagerAdapter(getSupportFragmentManager(), fragments);
+        //mAdapter.setTabTitles(mTitles);
         mViewPager.setAdapter(mAdapter);
         //设置显示模式 滚动
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

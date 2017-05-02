@@ -10,9 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.administrator.yilan000.R;
-import com.example.administrator.yilan000.htmldata.ApiService;
-import com.example.administrator.yilan000.htmldata.MeiNv;
-import com.example.administrator.yilan000.htmldata.MeiNvGson;
+import com.example.administrator.yilan000.bean.MeiNv;
+import com.example.administrator.yilan000.bean.MeiNvGson;
+import com.example.administrator.yilan000.constant.AppConfig;
+import com.example.administrator.yilan000.retrofit.ApiService;
 import com.example.administrator.yilan000.ui.base.BaseFragent;
 import com.example.administrator.yilan000.ui.pictures.PictureDescribeActivity;
 import com.example.administrator.yilan000.ui.pictures.adapter.ImageAdapter;
@@ -43,6 +44,10 @@ public class MeiNvFragment extends BaseFragent {
     private int page = 0;
 
 
+    public static MeiNvFragment newInstance() {
+        MeiNvFragment fragment = new MeiNvFragment();
+        return fragment;
+    }
     @BindView(R.id.recyclerView)
     EasyRecyclerView recyclerView;
 
@@ -118,7 +123,7 @@ public class MeiNvFragment extends BaseFragent {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())//添加 RxJava 适配器
                 .build();
         ApiService apiManager = retrofit.create(ApiService.class);//这里采用的是Java的动态代理模式
-        apiManager.getPictureData("0271191a3d0bcd8483debff0c759f20a", "10", page)
+        apiManager.getPictureData(AppConfig.APIKEY, "10", page)
                 .subscribeOn(Schedulers.io())
                 .map(new Func1<MeiNvGson, List<MeiNv>>() {
                     @Override
@@ -155,4 +160,6 @@ public class MeiNvFragment extends BaseFragent {
                 });
         page=page+1;
     }
+
+
 }

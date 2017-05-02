@@ -8,6 +8,9 @@ import android.os.Environment;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.administrator.yilan000.R;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -44,4 +47,17 @@ public class PictureUtil {
                     "阿偶出错了呢", Toast.LENGTH_LONG).show();
         }
     }
+
+    /*
+    图片显示
+     */
+
+    public static void showImage(ImageView showImView, Context context,String ImageUrl) {
+        Glide.with(context)
+                .load(ImageUrl)
+                .placeholder(R.mipmap.ic_launcher)
+                .centerCrop()
+                .into(showImView);
+    }
+
 }

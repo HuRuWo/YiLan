@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
-import com.example.administrator.yilan000.htmldata.MeiNv;
+import com.example.administrator.yilan000.bean.MeiNv;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 
 /**

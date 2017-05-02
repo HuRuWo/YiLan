@@ -3,7 +3,7 @@ package com.example.administrator.yilan000.ui.pictures.adapter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.example.administrator.yilan000.htmldata.MeiNv;
+import com.example.administrator.yilan000.bean.MeiNv;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
