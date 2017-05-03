@@ -1,10 +1,15 @@
 package com.example.administrator.yilan000.ui.news;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,6 +74,13 @@ public class NewsFragment extends BaseFragent implements ViewPager.OnPageChangeL
         mTabs.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(this);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                      showDialog(getContext());
+            }
+        });
+
         return view;
 
     }
@@ -125,5 +137,28 @@ public class NewsFragment extends BaseFragent implements ViewPager.OnPageChangeL
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    private void showDialog(final Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("是否前去github给个start?");
+        builder.setMessage("给作者一个start表示鼓励");
+        builder.setPositiveButton("前去", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Uri uri = Uri.parse("https://github.com/HuRuWo/YiLan");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.create();
+        builder.show();
     }
 }
