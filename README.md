@@ -19,8 +19,9 @@
 ![5](https://github.com/HuRuWo/YiLan/blob/master/Screenshots/Screenshot_2017-05-03-16-33-37.png)
 
  
-# 感谢以下开源库
+# 感谢以下开源库
  
 -     compile 'com.jude:easyrecyclerview:4.4.0'
+
  
 以及 API提供----[天行数据](http://www.tianapi.com/)
