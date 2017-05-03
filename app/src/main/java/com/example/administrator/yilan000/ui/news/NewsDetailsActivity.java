@@ -5,6 +5,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -55,18 +56,37 @@ public class NewsDetailsActivity extends BaseActivity {
         Bundle bundle = this.getIntent().getExtras();
         //接收name值
         final ArrayList<String> data = bundle.getStringArrayList("data");
-        Log.d("url", data.get(0));
+        Log.e("url", data.get(1));
+
+        WebSettings webSettings = webText.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setLoadWithOverviewMode(true);
+
+        webText.loadUrl(data.get(1));
 
         webText.setWebViewClient(new WebViewClient() {
 
+            //已加载
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                // TODO Auto-generated method stub
-                view.loadUrl(url);
-                return true;
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
+                //编写 javaScript方法
+//                String javascript = "javascript:function clearBody(){" +
+//                        "document.getElementsByTagName('head')[0].innerHTML=\"\";" +
+//                        "}";
+
+                //创建方法
+                //view.loadUrl(javascript);
+
+                //加载方法
+               // view.loadUrl("javascript:clearBody();");
+
+
             }
+
         });
-        webText.loadUrl(data.get(1));
 
         Glide.with(this)
                 .load(data.get(0)).error(R.mipmap.ic_launcher)

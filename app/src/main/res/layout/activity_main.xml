@@ -9,7 +9,7 @@
     tools:openDrawer="start">
 
 
-    <android.support.v4.view.ViewPager
+    <com.example.administrator.yilan000.widget.NoScrollViewPage
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

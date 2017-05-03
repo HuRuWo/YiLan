@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +15,7 @@ import com.example.administrator.yilan000.ui.base.BaseActivity;
 import com.example.administrator.yilan000.ui.base.TabPagerAdapter;
 import com.example.administrator.yilan000.ui.news.NewsFragment;
 import com.example.administrator.yilan000.ui.pictures.fragment.MeiNvFragment;
+import com.example.administrator.yilan000.widget.NoScrollViewPage;
 
 import static com.example.administrator.yilan000.R.id.viewPager;
 
@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    private ViewPager mViewPager;
+    private NoScrollViewPage mViewPager;
     private String[] mTitles;
     private Fragment[] fragments;
 
@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity
         setSupportActionBar(toolbar);
         mTitles = getResources().getStringArray(R.array.main_titles);
 
-        mViewPager = (ViewPager) findViewById(viewPager);
+        mViewPager = (NoScrollViewPage) findViewById(viewPager);
 
 
         fragments = new Fragment[2];
@@ -106,6 +106,7 @@ public class MainActivity extends BaseActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            mViewPager.setCurrentItem(0);
 
 
         } else if (id == R.id.nav_gallery) {
@@ -114,7 +115,7 @@ public class MainActivity extends BaseActivity
 
         } else if (id == R.id.nav_slideshow) {
             // Handle the camera action
-
+            mViewPager.setCurrentItem(1);
 
         } else if (id == R.id.nav_manage) {
             Toast.makeText(getApplicationContext(),
@@ -131,5 +132,8 @@ public class MainActivity extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
 
 }

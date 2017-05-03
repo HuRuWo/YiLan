@@ -1,9 +1,12 @@
 package com.example.administrator.yilan000.ui.news.presenter;
 
 
+import android.content.Context;
+
 import com.example.administrator.yilan000.bean.NewsGson;
 import com.example.administrator.yilan000.ui.news.contrant.NewsContract;
 import com.example.administrator.yilan000.ui.news.model.NewsModel;
+import com.example.administrator.yilan000.util.NetWorkUtil;
 
 import java.util.List;
 
@@ -15,10 +18,12 @@ import java.util.List;
 public class NewsPresenter implements NewsContract.Presenter, NewsContract.OnLoadFirstDataListener {
     private NewsContract.View view;
     private NewsContract.Model model;
+    private Context context;
 
-    public NewsPresenter(NewsContract.View view) {
+    public NewsPresenter(NewsContract.View view,Context context) {
         this.view = view;
         this.model = new NewsModel();
+        this.context=context;
     }
 
 
@@ -37,8 +42,8 @@ public class NewsPresenter implements NewsContract.Presenter, NewsContract.OnLoa
     }
 
     @Override
-    public void onFailure(String str, Exception e) {
+    public void onFailure(String str, Throwable e) {
+        NetWorkUtil.checkNetworkState(context);
     }
-
 
 }

@@ -69,9 +69,6 @@ public class NewsFragment extends BaseFragent implements ViewPager.OnPageChangeL
         mTabs.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(this);
 
-
-
-
         return view;
 
     }

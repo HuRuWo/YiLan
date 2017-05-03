@@ -18,7 +18,7 @@ public interface NewsContract {
 
     interface OnLoadFirstDataListener{
         void  onSuccess(List<NewsGson.NewslistBean> list);
-        void  onFailure(String str,Exception e);
+        void  onFailure(String str,Throwable e);
     }
 
     interface Presenter  {

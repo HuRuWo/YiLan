@@ -34,7 +34,7 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.google.code.gson:gson:2.7'
     //高级的recyclerview
-    compile 'com.jude:easyrecyclerview:4.2.3'
+    compile 'com.jude:easyrecyclerview:4.4.0'
     compile 'com.android.support:recyclerview-v7:24.2.0'
     //rxjava
     compile 'com.squareup.retrofit2:retrofit-converters:2.1.0'
@@ -47,4 +47,7 @@ dependencies {
 
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
 
+    //jsoup网页解析
+    compile 'org.jsoup:jsoup:1.8.3'
+    compile 'org.sufficientlysecure:html-textview:1.3'
 }

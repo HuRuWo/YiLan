@@ -1,5 +1,7 @@
 package com.example.administrator.yilan000.ui.news.model;
 
+import android.util.Log;
+
 import com.example.administrator.yilan000.bean.NewsGson;
 import com.example.administrator.yilan000.constant.AppConfig;
 import com.example.administrator.yilan000.constant.TypeUrl;
@@ -43,7 +45,7 @@ public class NewsModel implements NewsContract.Model{
                         @Override
                         public void onNext(List<NewsGson.NewslistBean> newsList) {
                             //成功  数据传出去
-                              listener.onSuccess(newsList);
+                            listener.onSuccess(newsList);
                         }
 
                         @Override
@@ -52,7 +54,8 @@ public class NewsModel implements NewsContract.Model{
 
                         @Override
                         public void onError(Throwable e) {
-
+                                 Log.e("error",e.getMessage());
+                                listener.onFailure("请求失败",e);
                         }
                     });
 
