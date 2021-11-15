@@ -8,6 +8,6 @@
  
 以及 API提供----[天行数据](http://www.tianapi.com/)
 
-具体可以参考下面的系统文章
+具体编写过程可以参考下面的系统文章
 
-[一个小时打造新闻app](https://www.huruwo.top/s=一个小时打造新闻)
+### [一个小时打造新闻app](https://www.huruwo.top/?s=一个小时打造新闻)
